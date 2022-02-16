@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/ekomobile/dadata/v2/api/suggest"
+	"github.com/Tobiska/dadata/v2/api/suggest"
 )
 
 type (
