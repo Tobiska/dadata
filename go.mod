@@ -1,4 +1,4 @@
-module github.com/Tobiska/dadata
+module github.com/Tobiska/dadata/v2
 
 go 1.17
 
