@@ -31,17 +31,6 @@ func (a *Api) Address(ctx context.Context, params *RequestParams) (ret []*Addres
 	return
 }
 
-// Bank try to return suggest banks by params
-func (a *Api) Bank(ctx context.Context, params *RequestParams) (ret []*BankSuggestion, err error) {
-	var result = &BankResponse{}
-	err = a.Client.Post(ctx, "suggest/bank", params, result)
-	if err != nil {
-		return
-	}
-	ret = result.Suggestions
-	return
-}
-
 // Email try to return suggest emails by params
 func (a *Api) Email(ctx context.Context, params *RequestParams) (ret []*EmailSuggestion, err error) {
 	var result = &EmailResponse{}

@@ -35,6 +35,15 @@ func (s *ApiSuggestIntegrationTest) TestAddress() {
 
 func (s *ApiSuggestIntegrationTest) TestBank() {
 	api := NewSuggestApi()
+	query := "044525225"
+	params := suggest.NewBankByIDParams(query)
+	res, err := api.BankByID(context.Background(), params)
+	s.NoError(err)
+	s.NotEmpty(res)
+}
+
+func (s *ApiSuggestIntegrationTest) TestBankById() {
+	api := NewSuggestApi()
 	params := suggest.RequestParams{
 		Query: "сбербанк",
 	}
