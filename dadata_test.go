@@ -3,7 +3,6 @@ package dadata
 import (
 	"context"
 	"fmt"
-	"os"
 	"testing"
 
 	"github.com/stretchr/testify/suite"
@@ -18,9 +17,9 @@ type (
 )
 
 func (s *ApiSuggestIntegrationTest) SetupSuite() {
-	if _, ok := os.LookupEnv("DADATA_API_KEY"); !ok {
-		s.Suite.T().Skip("no api keys in env")
-	}
+	//if _, ok := os.LookupEnv("DADATA_API_KEY"); !ok {
+	//	s.Suite.T().Skip("no api keys in env")
+	//}
 }
 
 func (s *ApiSuggestIntegrationTest) TestAddress() {
@@ -44,10 +43,10 @@ func (s *ApiSuggestIntegrationTest) TestBank() {
 
 func (s *ApiSuggestIntegrationTest) TestBankById() {
 	api := NewSuggestApi()
-	params := suggest.RequestParams{
+	params := suggest.BankByIDParams{
 		Query: "сбербанк",
 	}
-	res, err := api.Bank(context.Background(), &params)
+	res, err := api.BankByID(context.Background(), &params)
 	s.NoError(err)
 	s.NotEmpty(res)
 }

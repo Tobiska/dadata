@@ -239,11 +239,31 @@ type (
 		Swift                string             `json:"swift"`                 // Банковский идентификационный код в системе SWIFT
 		Okpo                 string             `json:"okpo"`                  // Код ОКПО
 		CorrespondentAccount string             `json:"correspondent_account"` // Корреспондентский счет в ЦБ РФ
-		RegistrationNumber   string             `json:"registration_number"`   // Регистрационный номер в ЦБ РФ
-		Rkc                  *Bank              `json:"rkc"`                   // Расчетно-кассовый центр. Объект такой же структуры, как сам банк.
-		Address              *AddressResponse   `json:"address"`               // см AddressResponse
-		Phone                string             `json:"phone"`                 // Не заполняется
+		TreasuryAccounts     *string            `json:"treasury_accounts,omitempty"`
+		RegistrationNumber   string             `json:"registration_number"` // Регистрационный номер в ЦБ РФ
+		Rkc                  *Bank              `json:"rkc"`                 // Расчетно-кассовый центр. Объект такой же структуры, как сам банк.
+		PaymentCity          *string            `json:"payment_city,omitempty"`
+		Address              *AddressResponse   `json:"address"` // см AddressResponse
+		Phone                string             `json:"phone"`   // Не заполняется
 		State                *OrganizationState `json:"state"`
+		Cbr                  *BankCbr           `json:"cbr"`
+	}
+	BankCbr struct {
+		Name    *BankName       `json:"name,omitempty"`
+		Bic     *string         `json:"bic,omitempty"`
+		Address *CbfBankAddress `json:"address,omitempty"`
+		Phones  *string         `json:"phones,omitempty"`
+	}
+
+	CbfBankAddress struct {
+		Value             string       `json:"value"`
+		UnrestrictedValue string       `json:"unrestricted_value"`
+		Data              *AddressData `json:"data"`
+	}
+
+	AddressData struct {
+		Source *string `json:"source,omitempty"`
+		Qc     *int    `json:"qc,omitempty"`
 	}
 
 	// OrganizationOPF Тип Кредитной организации
