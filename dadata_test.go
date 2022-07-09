@@ -3,11 +3,12 @@ package dadata
 import (
 	"context"
 	"fmt"
-	"github.com/Tobiska/dadata/api/suggest"
 	"os"
 	"testing"
 
 	"github.com/stretchr/testify/suite"
+
+	"github.com/ekomobile/dadata/v2/api/suggest"
 )
 
 type (
@@ -57,15 +58,6 @@ func (s *ApiSuggestIntegrationTest) TestParty() {
 		Query: "сбербанк",
 	}
 	res, err := api.Party(context.Background(), &params)
-	s.NoError(err)
-	s.NotEmpty(res)
-}
-
-func (s *ApiSuggestIntegrationTest) TestAddressByGeo() {
-	api := NewSuggestApi()
-	lat := "55.878"
-	lon := "37.653"
-	res, err := api.AddressByGeo(context.Background(), lat, lon)
 	s.NoError(err)
 	s.NotEmpty(res)
 }
