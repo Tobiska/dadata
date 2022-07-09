@@ -1,11 +1,11 @@
 package dadata
 
 import (
-	"github.com/Tobiska/dadata/api/clean"
-	"github.com/Tobiska/dadata/api/profile"
-	"github.com/Tobiska/dadata/api/stat"
-	"github.com/Tobiska/dadata/api/suggest"
-	"github.com/Tobiska/dadata/client"
+	"github.com/Tobiska/dadata/v2/api/clean"
+	"github.com/Tobiska/dadata/v2/api/profile"
+	"github.com/Tobiska/dadata/v2/api/stat"
+	"github.com/Tobiska/dadata/v2/api/suggest"
+	"github.com/Tobiska/dadata/v2/client"
 	"net/url"
 )
 
