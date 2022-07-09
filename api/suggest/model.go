@@ -47,6 +47,12 @@ type (
 		ToBound   *Bound `json:"to_bound"`
 	}
 
+	// RequestGeoParams Request struct
+	RequestGeoParams struct {
+		Lat string `json:"lat"` // user input for suggestion
+		Lon string `json:"lon"` // user input for suggestion
+	}
+
 	// AddressResponse result slice for address suggestions
 	AddressResponse struct {
 		Suggestions []*AddressSuggestion `json:"suggestions"`

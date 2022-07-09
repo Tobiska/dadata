@@ -79,6 +79,24 @@ func (a *Api) AddressByID(ctx context.Context, id string) (addresses []*AddressS
 	return
 }
 
+// AddressByID find addresses by Fias or Kladr
+// see full documentation https://confluence.hflabs.ru/pages/viewpage.action?pageId=312016944
+func (a *Api) AddressByGeo(ctx context.Context, lat, lon string) (addresses []*AddressSuggestion, err error) {
+	var result = &AddressResponse{}
+	var req = &RequestGeoParams{
+		Lat: lat,
+		Lon: lon,
+	}
+
+	err = a.Client.Post(ctx, "geolocate/address", req, result)
+	if err != nil {
+		return
+	}
+	addresses = result.Suggestions
+
+	return
+}
+
 // CountryByID find countries by ID
 func (a *Api) CountryByID(ctx context.Context, id string) (addresses []*CountrySuggestion, err error) {
 	var result = &CountryResponse{}
